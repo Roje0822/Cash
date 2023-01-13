@@ -1,0 +1,13 @@
+name: CashShop
+main: com.roje.cashshop.CashShopPlugin
+author: Roje
+description: Minecraft CashShop Plugin
+
+version: 0.1
+api-version: 1.19
+
+depend:
+  - NickLib
+commands:
+  캐시:
+  캐시상점:
