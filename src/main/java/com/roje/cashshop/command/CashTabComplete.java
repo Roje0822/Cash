@@ -44,6 +44,8 @@ public class CashTabComplete implements TabCompleter {
                     }
                 }
             }
+        } else {
+            System.out.println("콘솔에서는 명령어를 실행할 수 없습니다.");
         }
 
         return null;

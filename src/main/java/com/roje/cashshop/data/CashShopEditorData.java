@@ -13,10 +13,4 @@ public class CashShopEditorData {
     }
 
 
-    public void saveShop(){
-
-    }
-
-
-    // 클릭했을때 컨피그 저장.
 }
