@@ -61,6 +61,20 @@ public class CashShopCmd implements CommandExecutor {
                 player.sendMessage("§a" + name + "§f 상점을 삭제했습니다");
                 return true;
             }
+            case "열기" -> {
+                if (args.length == 1) {
+                    player.sendMessage("상점이름을 입력해주세요");
+                    return true;
+                }
+                name = args[1];
+                cashShopData = new CashShopData(name);
+                if (!cashShopData.isShopExist()) {
+                    player.sendMessage("상점이 존재하지 않습니다");
+                    return true;
+                }
+                cashShopData.openShop(player);
+                return true;
+            }
             case "편집" -> {
                 if (args.length == 1) {
                     player.sendMessage("상점이름을 입력해주세요");
@@ -73,7 +87,6 @@ public class CashShopCmd implements CommandExecutor {
                     return true;
                 }
                 cashShopData.editShop(player);
-                inventoryClickMap.put(player, name);
                 return true;
             }
             default -> {

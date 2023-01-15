@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 public class CashData {
 
     private Player player;
+
     public CashData(Player player) {
         this.player = player;
     }
@@ -24,7 +25,7 @@ public class CashData {
     }
 
 
-    public void setCash( Long amount) {
+    public void setCash(Long amount) {
         Config config = new Config("data/" + player.getUniqueId(), CashShopPlugin.getPlugin());
         config.setLong("cash", amount);
     }
