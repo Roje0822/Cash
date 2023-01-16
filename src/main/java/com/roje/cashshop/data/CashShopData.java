@@ -1,8 +1,8 @@
 package com.roje.cashshop.data;
 
 import com.github.nicklib.data.Config;
-import com.github.nicklib.utils.InventoryUtil;
 import com.roje.cashshop.CashShopPlugin;
+import com.roje.cashshop.data.impl.CashShopImpl;
 import com.roje.cashshop.utils.LoreUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -49,7 +49,6 @@ public class CashShopData implements CashShopImpl {
         for (int i = 0; i < 54; i++) {
             ItemStack item = config.getConfig().getItemStack(name + ".items." + i + ".meta");
             if (item != null) {
-                inv.setItem(i, item);
                 LoreUtil loreUtil = new LoreUtil(item);
                 String buy = String.valueOf(config.getInt(name + ".items." + i + ".price.buy"));
                 String sell = String.valueOf(config.getInt(name + ".items." + i + ".price.sell"));
@@ -72,7 +71,7 @@ public class CashShopData implements CashShopImpl {
             }
         }
         shopTypeMap.put(player, GuiType.OPEN);
-        inventoryClickMap.put(player, name);
+        inventoryNameMap.put(player, name);
         player.openInventory(inv);
 
     }
@@ -85,16 +84,23 @@ public class CashShopData implements CashShopImpl {
         for (int i = 0; i < 54; i++) {
             ItemStack item = config.getConfig().getItemStack(name + ".items." + i + ".meta");
             if (item != null) {
-                ItemMeta meta = item.getItemMeta();
+                LoreUtil loreUtil = new LoreUtil(item);
                 List<String> lore = item.getItemMeta().getLore();
-                lore.add("§c구매가격 설정 : Shift + 좌클릭");
-                lore.add("§a판매가격 설정 : Shift + 우클릭");
-                inv.setItem(i, LoreUtil.setItemMeta(lore));
+                if (lore == null) {
+                    inv.setItem(i, LoreUtil.setItemMeta(List.of("§c구매가격 설정 : Shift + 좌클릭", "§a판매가격 설정 : Shift + 우클릭")));
+                }
+                if (lore != null) {
+                    ItemMeta meta = item.getItemMeta();
+                    lore.add("§c구매가격 설정 : Shift + 좌클릭");
+                    lore.add("§a판매가격 설정 : Shift + 우클릭");
+                    inv.setItem(i, LoreUtil.setItemMeta(lore));
+                }
             }
         }
         shopTypeMap.put(player, GuiType.EDIT);
-        inventoryClickMap.put(player, name);
+        inventoryNameMap.put(player, name);
         player.openInventory(inv);
+
     }
 
 

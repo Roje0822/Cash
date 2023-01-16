@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class CashShopMapData {
 
-    public static Map<Player, String> inventoryClickMap = new HashMap<>();
+    public static Map<Player, String> inventoryNameMap = new HashMap<>();
 
     public static Map<Player, Tuple<String, Integer>> priceMap = new HashMap<>();
 
@@ -18,7 +18,6 @@ public class CashShopMapData {
 
     public static Map<Player, GuiType> shopTypeMap = new HashMap<>();
 
-    public static Map<ItemStack, List<String>> loreMap = new HashMap<>();
 
 
 
