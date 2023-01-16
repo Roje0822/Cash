@@ -74,6 +74,7 @@ public class CashShopData implements CashShopImpl {
         shopTypeMap.put(player, GuiType.OPEN);
         inventoryClickMap.put(player, name);
         player.openInventory(inv);
+
     }
 
     /**
