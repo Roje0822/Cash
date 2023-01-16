@@ -24,11 +24,11 @@ public class PlayerChatListener implements Listener {
             if (priceTypeMap.get(player).equals("구매")) {
                 Config config = new Config("shop/" + priceMap.get(player).getA(), CashShopPlugin.getPlugin());
                 if (finalMessage.equals("불가")) {
-                    config.setString(priceMap.get(player).getA() + ".price." + priceMap.get(player).getB().toString() + ".buy", "불가");
+                    config.setString(priceMap.get(player).getA() + ".items." + priceMap.get(player).getB().toString() + ".price.buy", "불가");
                     return;
                 }
                 try {
-                    config.setInt(priceMap.get(player).getA() + ".price." + priceMap.get(player).getB().toString() + ".buy", Integer.parseInt(finalMessage));
+                    config.setInt(priceMap.get(player).getA() + ".items." + priceMap.get(player).getB().toString() + ".price.buy", Integer.parseInt(finalMessage));
                     player.sendMessage("구매 가격을 " + finalMessage + " 으로 설정하였습니다.");
                     priceMap.remove(player);
                 } catch (NumberFormatException e) {
@@ -38,11 +38,11 @@ public class PlayerChatListener implements Listener {
             if (priceTypeMap.get(player).equals("판매")) {
                 Config config = new Config("shop/" + priceMap.get(player).getA(), CashShopPlugin.getPlugin());
                 if (finalMessage.equals("불가")) {
-                    config.setString(priceMap.get(player).getA() + ".price." + priceMap.get(player).getB().toString() + ".buy", "불가");
+                    config.setString(priceMap.get(player).getA() + ".items." + priceMap.get(player).getB().toString() + ".price.sell", "불가");
                     return;
                 }
                 try {
-                    config.setInt(priceMap.get(player).getA() + ".price." + priceMap.get(player).getB().toString() + ".sell", Integer.parseInt(finalMessage));
+                    config.setInt(priceMap.get(player).getA() + ".items." + priceMap.get(player).getB().toString() + ".price.sell", Integer.parseInt(finalMessage));
                     player.sendMessage("판매 가격을 " + finalMessage + "으로 설정하였습니다.");
                     priceMap.remove(player);
                 } catch (NumberFormatException e) {

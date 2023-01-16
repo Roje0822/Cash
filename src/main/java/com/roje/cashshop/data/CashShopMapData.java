@@ -16,7 +16,7 @@ public class CashShopMapData {
 
     public static Map<Player, String> priceTypeMap = new HashMap<>();
 
-    public static Map<Player, String> shopTypeMap = new HashMap<>();
+    public static Map<Player, GuiType> shopTypeMap = new HashMap<>();
 
     public static Map<ItemStack, List<String>> loreMap = new HashMap<>();
 
