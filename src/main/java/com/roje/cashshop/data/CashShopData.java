@@ -44,6 +44,10 @@ public class CashShopData implements CashShopImpl {
     }
 
 
+    /**
+     * 캐쉬샵 오픈
+     * @param player
+     */
     public void openShop(Player player) {
         Inventory inv = Bukkit.createInventory(null, 54, name);
         for (int i = 0; i < 54; i++) {
@@ -84,16 +88,19 @@ public class CashShopData implements CashShopImpl {
         for (int i = 0; i < 54; i++) {
             ItemStack item = config.getConfig().getItemStack(name + ".items." + i + ".meta");
             if (item != null) {
+                ItemMeta meta = item.getItemMeta();
                 LoreUtil loreUtil = new LoreUtil(item);
                 List<String> lore = item.getItemMeta().getLore();
                 if (lore == null) {
-                    inv.setItem(i, LoreUtil.setItemMeta(List.of("§c구매가격 설정 : Shift + 좌클릭", "§a판매가격 설정 : Shift + 우클릭")));
+                    meta.setLore(List.of("§c구매가격 설정 : Shift + 좌클릭", "§a판매가격 설정 : Shift + 우클릭"));
+                    item.setItemMeta(meta);
+                    inv.setItem(i, item);
                 }
                 if (lore != null) {
-                    ItemMeta meta = item.getItemMeta();
-                    lore.add("§c구매가격 설정 : Shift + 좌클릭");
-                    lore.add("§a판매가격 설정 : Shift + 우클릭");
-                    inv.setItem(i, LoreUtil.setItemMeta(lore));
+                    lore.add(List.of("§c구매가격 설정 : Shift + 좌클릭", "§a판매가격 설정 : Shift + 우클릭").toString());
+                    meta.setLore(lore);
+                    item.setItemMeta(meta);
+                    inv.setItem(i, item);
                 }
             }
         }
