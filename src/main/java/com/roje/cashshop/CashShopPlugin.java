@@ -33,7 +33,7 @@ public class CashShopPlugin extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), this);
         Bukkit.getPluginManager().registerEvents(new InventoryClickListener(), this);
         Bukkit.getPluginManager().registerEvents(new InventoryCloseListener(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerChatListener(), this); //ㅎㅇ 라고할뻔
+        Bukkit.getPluginManager().registerEvents(new PlayerChatListener(), this); //ㅎㅇ 라고할뻔 gg
 
 
         /** complete */
